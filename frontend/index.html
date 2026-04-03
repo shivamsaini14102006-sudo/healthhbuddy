@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Healthcare Operating System — Intelligent clinical decision support for real-time patient assessment, risk scoring, and care recommendations.">
+    <title>Healthcare OS — Intelligent Clinical Decision Support</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
+</head>
+<body>
+
+    <!-- ═══ Header ═══ -->
+    <header class="app-header">
+        <div class="header-inner">
+            <div class="logo">
+                <div class="logo-icon">🏥</div>
+                <div class="logo-text">
+                    <h1>Healthcare OS</h1>
+                    <span>Clinical Decision Intelligence</span>
+                </div>
+            </div>
+            <nav class="nav-tabs" id="navTabs">
+                <button class="nav-tab active" data-view="intake" id="navIntake">
+                    <span>📋</span> Patient Intake
+                </button>
+                <button class="nav-tab" data-view="dashboard" id="navDashboard">
+                    <span>📊</span> Doctor Dashboard
+                </button>
+            </nav>
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                System Online
+            </div>
+        </div>
+    </header>
+
+    <!-- ═══ Main Content ═══ -->
+    <main class="main-container">
+
+        <!-- ─── Patient Intake View ─── -->
+        <section class="view active" id="intakeView">
+
+            <!-- Patient Info -->
+            <div class="card animate-in delay-1">
+                <div class="card-header">
+                    <div class="card-icon indigo">👤</div>
+                    <div>
+                        <div class="card-title">Patient Information</div>
+                        <div class="card-subtitle">Basic demographic and identification details</div>
+                    </div>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="patientName">Full Name</label>
+                        <input type="text" id="patientName" placeholder="e.g. Rajesh Kumar" autocomplete="name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="patientAge">Age</label>
+                        <input type="number" id="patientAge" placeholder="e.g. 58" min="0" max="120">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="patientGender">Gender</label>
+                        <select id="patientGender">
+                            <option value="">Select gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Symptoms -->
+            <div class="card animate-in delay-2">
+                <div class="card-header">
+                    <div class="card-icon rose">🩺</div>
+                    <div>
+                        <div class="card-title">Symptoms & Complaints</div>
+                        <div class="card-subtitle">Current symptoms and their duration</div>
+                    </div>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label class="form-label" for="symptoms">
+                            Symptoms <span class="required">*required</span>
+                        </label>
+                        <textarea id="symptoms" rows="3" placeholder="e.g. chest pain, shortness of breath, dizziness"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="symptomDuration">How long have you had these symptoms?</label>
+                        <select id="symptomDuration">
+                            <option value="">Select duration</option>
+                            <option value="few minutes">A few minutes</option>
+                            <option value="1-2 hours">1–2 hours</option>
+                            <option value="several hours">Several hours</option>
+                            <option value="1 day">1 day</option>
+                            <option value="2-3 days">2–3 days</option>
+                            <option value="1 week">About a week</option>
+                            <option value="2-4 weeks">2–4 weeks</option>
+                            <option value="more than a month">More than a month</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vitals -->
+            <div class="card animate-in delay-3">
+                <div class="card-header">
+                    <div class="card-icon cyan">💓</div>
+                    <div>
+                        <div class="card-title">Vital Signs</div>
+                        <div class="card-subtitle">Current vitals — leave blank if not available</div>
+                    </div>
+                </div>
+                <div class="vitals-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="heartRate">❤️ Heart Rate (bpm)</label>
+                        <input type="number" id="heartRate" placeholder="e.g. 78" min="20" max="250">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="bpSystolic">🩸 Systolic BP (mmHg)</label>
+                        <input type="number" id="bpSystolic" placeholder="e.g. 120" min="50" max="300">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="bpDiastolic">🩸 Diastolic BP (mmHg)</label>
+                        <input type="number" id="bpDiastolic" placeholder="e.g. 80" min="30" max="200">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="temperature">🌡️ Temperature (°F)</label>
+                        <input type="number" id="temperature" placeholder="e.g. 98.6" step="0.1" min="90" max="110">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="spo2">🫁 SpO2 (%)</label>
+                        <input type="number" id="spo2" placeholder="e.g. 98" min="50" max="100">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medical History -->
+            <div class="card animate-in delay-4">
+                <div class="card-header">
+                    <div class="card-icon amber">📁</div>
+                    <div>
+                        <div class="card-title">Medical History & Medications</div>
+                        <div class="card-subtitle">Past conditions and current treatment</div>
+                    </div>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label class="form-label" for="medicalHistory">Known Medical Conditions</label>
+                        <textarea id="medicalHistory" rows="2" placeholder="e.g. hypertension, diabetes, previous heart attack"></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label class="form-label" for="currentMeds">Current Medications</label>
+                        <textarea id="currentMeds" rows="2" placeholder="e.g. metformin 500mg, atenolol 50mg, aspirin 75mg"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Adherence -->
+            <div class="card animate-in delay-5">
+                <div class="card-header">
+                    <div class="card-icon emerald">📈</div>
+                    <div>
+                        <div class="card-title">Treatment Adherence</div>
+                        <div class="card-subtitle">How well has the patient followed the care plan?</div>
+                    </div>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="missedMeds">Missed medications per week</label>
+                        <input type="number" id="missedMeds" placeholder="e.g. 2" min="0" max="21" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="missedAppts">Missed appointments (last 6 months)</label>
+                        <input type="number" id="missedAppts" placeholder="e.g. 1" min="0" max="20" value="0">
+                    </div>
+                    <div class="form-group full-width">
+                        <label class="form-label">Lifestyle Compliance</label>
+                        <div class="checkbox-row">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="followsDiet">
+                                <label for="followsDiet">Follows prescribed diet plan</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="exercisesRegularly">
+                                <label for="exercisesRegularly">Exercises regularly (≥3x/week)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="form-actions animate-in delay-6">
+                <button class="btn btn-secondary btn-lg" type="button" id="btnReset">
+                    🔄 Reset Form
+                </button>
+                <button class="btn btn-primary btn-lg" type="button" id="btnAssess">
+                    🩺 Run Assessment
+                </button>
+            </div>
+
+        </section>
+
+        <!-- ─── Doctor Dashboard View ─── -->
+        <section class="view" id="dashboardView">
+            <div id="dashboardContent">
+                <!-- Dynamically rendered by app.js -->
+                <div class="card" style="text-align:center; padding: 60px;">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">📊</div>
+                    <div class="card-title" style="margin-bottom: 8px;">No Assessment Data</div>
+                    <div class="card-subtitle">Submit a patient intake form to view the clinical dashboard.</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══ Loading Overlay ═══ -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Analyzing Patient Data...</div>
+        <div class="loading-subtext">Computing risk scores and generating clinical summary</div>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
